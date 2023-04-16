@@ -182,6 +182,8 @@ Citizen.CreateThread(function()
                     if IsControlJustPressed(1, 38) then
                         OpenAmmunationMenu()
                     end
+                else
+                    RageUI.CloseAll()
                 end
             end
         end
@@ -205,8 +207,4 @@ Citizen.CreateThread(function()
         AddTextComponentString("Ammunation")
         EndTextCommandSetBlipName(blip)
     end
-end)
-    
-RegisterCommand("armurerie", function()
-    OpenAmmunationMenu()
 end)
