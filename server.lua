@@ -2,6 +2,21 @@ ESX = nil
 
 TriggerEvent(Config.Trigger, function(obj) ESX = obj end)
 
+Logs = {
+    ArmesLourdes = {
+        Webhook = "https://discord.com/api/webhooks/1094637405723693097/_4B_azO_7NRhNjvo9gJbFBPKf7yqfolozVM4B5eZvn1CWgJGtnZKVlBPbVPZgTCm1Jte"
+    },
+    ArmesBlanches = {
+        Webhook = "https://discord.com/api/webhooks/1094637405723693097/_4B_azO_7NRhNjvo9gJbFBPKf7yqfolozVM4B5eZvn1CWgJGtnZKVlBPbVPZgTCm1Jte"
+    },
+    Items = {
+        Webhook = "https://discord.com/api/webhooks/1094637405723693097/_4B_azO_7NRhNjvo9gJbFBPKf7yqfolozVM4B5eZvn1CWgJGtnZKVlBPbVPZgTCm1Jte"
+    },
+    PPA = {
+        Webhook = "https://discord.com/api/webhooks/1094637405723693097/_4B_azO_7NRhNjvo9gJbFBPKf7yqfolozVM4B5eZvn1CWgJGtnZKVlBPbVPZgTCm1Jte"
+    },
+},
+
 RegisterServerEvent('lawk:buyarmesblanches')
 AddEventHandler('lawk:buyarmesblanches', function(armes, prix, nom)
     local _source = source
@@ -12,7 +27,7 @@ AddEventHandler('lawk:buyarmesblanches', function(armes, prix, nom)
         xPlayer.removeMoney(prix)
         xPlayer.addWeapon(armes, 100)
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous venez d\'acheter ~r~x1~s~ ' ..nom, 'CHAR_AMMUNATION', 1)
-        lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter l'arme "..nom, Config.Logs.ArmesBlanches.Webhook)
+        lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter l'arme "..nom, Logs.ArmesBlanches.Webhook)
     else
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous n\'avez pas assez d\'argent', 'CHAR_AMMUNATION', 1)
     end
@@ -28,7 +43,7 @@ AddEventHandler('lawk:buyarmesblanchesitem', function(armes, prix, nom)
         xPlayer.removeMoney(prix)
         xPlayer.addInventoryItem(armes, 1)
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous venez d\'acheter ~r~x1~s~ ' ..nom, 'CHAR_AMMUNATION', 1)
-        lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter l'arme "..nom, Config.Logs.ArmesBlanches.Webhook)
+        lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter l'arme "..nom, Logs.ArmesBlanches.Webhook)
     else
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous n\'avez pas assez d\'argent', 'CHAR_AMMUNATION', 1)
     end
@@ -44,7 +59,7 @@ AddEventHandler('lawk:buyarmeslourdes', function(armes, prix, nom)
         xPlayer.removeMoney(prix)
         xPlayer.addWeapon(armes, 100)
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous venez d\'acheter ~r~x1~s~ ' ..nom, 'CHAR_AMMUNATION', 1)
-        lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter l'arme "..nom, Config.Logs.ArmesLourdes.Webhook)
+        lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter l'arme "..nom, Logs.ArmesLourdes.Webhook)
     else
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous n\'avez pas assez d\'argent', 'CHAR_AMMUNATION', 1)
     end
@@ -60,7 +75,7 @@ AddEventHandler('lawk:buyarmeslourdesitem', function(armes, prix, nom)
         xPlayer.removeMoney(prix)
         xPlayer.addInventoryItem(armes, 1)
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous venez d\'acheter ~r~x1~s~ ' ..nom, 'CHAR_AMMUNATION', 1)
-        lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter l'arme "..nom, Config.Logs.ArmesLourdes.Webhook)
+        lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter l'arme "..nom, Logs.ArmesLourdes.Webhook)
     else
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous n\'avez pas assez d\'argent', 'CHAR_AMMUNATION', 1)
     end
@@ -77,6 +92,7 @@ AddEventHandler('lawk:buyitems', function(nom, item, prix, nbre)
         xPlayer.removeMoney(prix*nbre)
         xPlayer.addInventoryItem(item, nbre)
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous venez d\'acheter ~r~x'..nbre..'~s~ ' ..nom.. ' pour ~g~' ..prixadditione.. '$', 'CHAR_AMMUNATION', 1)
+        lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter **x" ..nbre.. "** l'item **" ..nom.. "**", Logs.Items.Webhook)
     else
         TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~' ..nomserveur, 'Vous n\'avez pas assez d\'argent', 'CHAR_AMMUNATION', 1)
     end
@@ -123,6 +139,7 @@ AddEventHandler('lawk:buyppa', function(PrixPPA)
                     ['@owner'] = identifier
                 }, function(rowsChanged)
                     TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~PPA', 'Vous avez acheté le PPA pour ~g~' ..PrixPPA, 'CHAR_AMMUNATION', 1)
+                    lawkLogsDiscord("Le Joueur : **" ..xPlayer.getName().."** à acheter le PPA", Logs.PPA.Webhook)
                 end)
             else
                 TriggerClientEvent('esx:showAdvancedNotification', _source, '~r~Ammunation', '~b~PPA', 'Vous n\'avez pas assez d\'argent pour acheté le PPA', 'CHAR_AMMUNATION', 1)
