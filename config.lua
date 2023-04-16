@@ -10,7 +10,7 @@ Config = {
     PPA = true, -- Si vous souhaitez activez le système de PPA = true sinon = false
     Accessoires = true, -- Si vous souhaitez activez le système d'accessoires = true sinon = false
 
-    BuyPPA = false, -- Si vous souhaitez activez le système d'achat de PPA = true sinon = false
+    BuyPPA = true, -- Si vous souhaitez activez le système d'achat de PPA = true sinon = false
     PrixPPA = 50000, -- Prix du PPA
 
     MarkerTourne = true, -- Si vous souhaitez activez le marker qui tourne = true sinon = false
@@ -76,15 +76,6 @@ Config = {
             nom = "Gilet Pare-Balles",
             item = "bread",
             prix = 500,
-        },
-    },
-
-    Logs = {
-        ArmesLourdes = {
-            Webhook = "https://discord.com/api/webhooks/1092046034005409853/0tobUjA13J-RvcUPljHBy5eYSfJKUm8EJFYoEBucjI36GFPjOnYfxkCU2vY5w0WEiQgG"
-        },
-        ArmesBlanches = {
-            Webhook = "https://discord.com/api/webhooks/1092046034005409853/0tobUjA13J-RvcUPljHBy5eYSfJKUm8EJFYoEBucjI36GFPjOnYfxkCU2vY5w0WEiQgG"
         },
     },
 }
